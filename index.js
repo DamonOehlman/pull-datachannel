@@ -31,7 +31,31 @@ var pull = require('pull-core');
   ```
 **/
 exports.read = pull.Source(function(dc) {
+  var buffer = [];
+  var next = [];
 
+  dc.addEventListener('message', function handleMessage(evt) {
+    // if we are waiting for a value provide it, otherwise buffer
+    // ignore the initial undefined value
+    next.length ?
+      next.shift()(null, evt.data) :
+      buffer[buffer.length] = evt.data;
+  });
+
+  return function(end, cb) {
+    if (end) {
+      dc.removeEventListener('message', handleMessage);
+      return cb(end);
+    }
+
+    // if we have items in the buffer, return the first
+    if (buffer.length) {
+      return cb(false, buffer.shift());
+    }
+
+    // otherwise, wait for an item to hit the buffer
+    next = [cb];
+  };
 });
 
 /**
@@ -52,6 +76,6 @@ exports.read = pull.Source(function(dc) {
   ```
 
 **/
-exports.write = pull.Sink(function(read) {
+exports.write = pull.Sink(function(read, dc, done) {
 
 });
