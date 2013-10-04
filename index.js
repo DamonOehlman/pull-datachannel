@@ -52,9 +52,25 @@ exports.read = pull.Source(function(dc) {
 /**
   ### write
 
-  To be completed.  
+  Create a pull-stream sink on target data channel.
+
+  <<< examples/write.js
 
 **/
 exports.write = pull.Sink(function(read, dc, done) {
+  function next(end, data) {
+    if (end) {
+      return (done || function() {})(end);
+    }
 
+    // process the data
+    dc.send(data);
+
+    // TODO: check ready state of the datachannel
+
+    // read the next data chunk
+    read(null, next);
+  }
+
+  read(null, next);
 });
