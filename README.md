@@ -47,7 +47,8 @@ quickconnect({ ns: 'dctest', data: true })
 ```
 
 __NOTE:__ At this stage, even though I'm sending only text data I am still
-seeing data-channel exceptions in chrome :(
+seeing data-channel exceptions in chrome.  I have implemented a short term
+try / catch block to work around the issue in the short term...
 
 Also if you aren't seeing events across the connection, it's important
 to note that [point](https://github.com/DamonOehlman/point) is a simple
