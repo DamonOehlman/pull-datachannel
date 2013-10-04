@@ -27,6 +27,8 @@
   "devDependencies": {
     "pull-stream": "~2.20.1",
     "rtc-quickconnect": "~0.1.2",
-    "random-name": "~0.1.0"
+    "random-name": "~0.1.0",
+    "point": "~0.2.0",
+    "pull-observable": "~0.1.1"
   }
 }

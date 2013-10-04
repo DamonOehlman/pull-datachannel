@@ -10,6 +10,17 @@ var pull = require('pull-core');
   [Sharing using Data Channels demo](https://github.com/rtc-io/demo-sharing)
   makes use of these pull-streams.
 
+  ## Example Usage
+
+  Displayed below is an example that demonstrates how pull-streams can 
+  be used in conjunction with the data channel to transmit and receive
+  data via data-channels:
+
+  <<< examples/shared-pointer.js
+
+  __NOTE:__ At this stage, even though I'm sending only text data I am still
+  seeing data-channel exceptions in chrome :(
+
   ## Reference
 **/
 

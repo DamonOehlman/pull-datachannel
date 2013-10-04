@@ -3,7 +3,7 @@ var pull = require('pull-stream');
 var randomName = require('random-name');
 var dc = require('../');
 
-quickconnect({ ns: 'dctest', data: true, dtls: true })
+quickconnect({ ns: 'dctest', data: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
