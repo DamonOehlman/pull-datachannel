@@ -79,10 +79,16 @@ exports.write = pull.Sink(function(read, dc, done) {
       return (done || function() {})(end);
     }
 
-    // process the data
-    dc.send(data);
-
     // TODO: check ready state of the datachannel
+    // console.log(dc.bufferedAmount, dc.readyState, dc.protocol);
+
+    // process the data
+    try {
+      dc.send(data);
+    }
+    catch (e) {
+      // console.log('captured error: ', e);
+    }
 
     // read the next data chunk
     read(null, next);
