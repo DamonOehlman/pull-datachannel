@@ -1,6 +1,6 @@
 {
   "name": "pull-datachannel",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "pull-stream source and sink for WebRTC data channels",
   "main": "index.js",
   "scripts": {
