@@ -26,7 +26,7 @@ var dc = require('pull-datachannel');
 // capture the pointer on the document
 var point = require('point')(document);
 
-quickconnect({ ns: 'dctest', data: true, dtls: true })
+quickconnect({ ns: 'dctest', data: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
