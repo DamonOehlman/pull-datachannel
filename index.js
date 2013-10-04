@@ -1,7 +1,7 @@
 var pull = require('pull-core');
 
 /**
-  # pull-dc
+  # pull-datachannel
 
   [Pull Stream](https://github.com/dominictarr/pull-stream) interfaces for
   working with WebRTC data channels.  While this is not an official part of
@@ -18,17 +18,8 @@ var pull = require('pull-core');
 
   Create a pull-stream source on a `RTCDataChannel`.
 
-  ```js
-  var pull = require('pull-stream');
-  var dc = require('pull-dc');
-  var channel = getDataChannel(); // magic happens here
+  <<< examples/read.js
 
-  // read the data coming from the stream and log it out
-  pull(
-    dc.read(channel),
-    pull.log()
-  );
-  ```
 **/
 exports.read = pull.Source(function(dc) {
   var buffer = [];
@@ -60,20 +51,8 @@ exports.read = pull.Source(function(dc) {
 
 /**
   ### write
-  
-  Create a pull-stream sink on a `RTCDataChannel`.
 
-  ```js
-  var pull = require('pull-stream');
-  var dc = require('pull-dc');
-  var channel = getDataChannel(); // magic happens here
-
-  // write the values to the data channel
-  pull(
-    pull.values([1, 2, 3]),
-    dc.write(channel)
-  );
-  ```
+  To be completed.  
 
 **/
 exports.write = pull.Sink(function(read, dc, done) {

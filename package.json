@@ -1,5 +1,5 @@
 {
-  "name": "pull-dc",
+  "name": "pull-datachannel",
   "version": "0.0.0",
   "description": "pull-stream source and sink for WebRTC data channels",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DamonOehlman/pull-dc.git"
+    "url": "https://github.com/DamonOehlman/pull-datachannel.git"
   },
   "keywords": [
     "pull-stream",
@@ -19,9 +19,14 @@
   "author": "Damon Oehlman <damon.oehlman@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DamonOehlman/pull-dc/issues"
+    "url": "https://github.com/DamonOehlman/pull-datachannel/issues"
   },
   "dependencies": {
     "pull-core": "~1.0.0"
+  },
+  "devDependencies": {
+    "pull-stream": "~2.20.1",
+    "rtc-quickconnect": "~0.1.2",
+    "random-name": "~0.1.0"
   }
 }
