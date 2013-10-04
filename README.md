@@ -11,6 +11,49 @@ makes use of these pull-streams.
 [![NPM](https://nodei.co/npm/pull-datachannel.png)](https://nodei.co/npm/pull-datachannel/)
 
 
+## Example Usage
+
+Displayed below is an example that demonstrates how pull-streams can 
+be used in conjunction with the data channel to transmit and receive
+data via data-channels:
+
+```js
+var quickconnect = require('rtc-quickconnect');
+var pull = require('pull-stream');
+var observable = require('pull-observable');
+var dc = require('pull-datachannel');
+
+// capture the pointer on the document
+var point = require('point')(document);
+
+quickconnect({ ns: 'dctest', data: true, dtls: true })
+  .on('dc:open', function(channel, peerId) {
+    console.log('data channel opened for peer: ' + peerId);
+
+    // stream the pointer information across the datachannel
+    pull(
+      observable(point),
+      pull.map(JSON.stringify),
+      dc.write(channel)
+    );
+
+    // read incoming pointer information
+    pull(
+      dc.read(channel),
+      pull.map(JSON.parse),
+      pull.log()
+    );
+  });
+```
+
+__NOTE:__ At this stage, even though I'm sending only text data I am still
+seeing data-channel exceptions in chrome :(
+
+Also if you aren't seeing events across the connection, it's important
+to note that [point](https://github.com/DamonOehlman/point) is a simple
+library that captures unified pointer events (mouse and touch) so you will
+need to click and drag the mouse to create move events.
+
 ## Reference
 
 ### read
@@ -23,7 +66,7 @@ var pull = require('pull-stream');
 var randomName = require('random-name');
 var dc = require('pull-datachannel');
 
-quickconnect({ ns: 'dctest', data: true, dtls: true })
+quickconnect({ ns: 'dctest', data: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 

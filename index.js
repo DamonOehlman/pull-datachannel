@@ -21,6 +21,11 @@ var pull = require('pull-core');
   __NOTE:__ At this stage, even though I'm sending only text data I am still
   seeing data-channel exceptions in chrome :(
 
+  Also if you aren't seeing events across the connection, it's important
+  to note that [point](https://github.com/DamonOehlman/point) is a simple
+  library that captures unified pointer events (mouse and touch) so you will
+  need to click and drag the mouse to create move events.
+
   ## Reference
 **/
 
