@@ -1,4 +1,4 @@
-# pull-dc
+# pull-datachannel
 
 [Pull Stream](https://github.com/dominictarr/pull-stream) interfaces for
 working with WebRTC data channels.  While this is not an official part of
@@ -8,7 +8,7 @@ and the
 makes use of these pull-streams.
 
 
-[![NPM](https://nodei.co/npm/pull-dc.png)](https://nodei.co/npm/pull-dc/)
+[![NPM](https://nodei.co/npm/pull-datachannel.png)](https://nodei.co/npm/pull-datachannel/)
 
 
 ## Reference
@@ -18,32 +18,35 @@ makes use of these pull-streams.
 Create a pull-stream source on a `RTCDataChannel`.
 
 ```js
+var quickconnect = require('rtc-quickconnect');
 var pull = require('pull-stream');
-var dc = require('pull-dc');
-var channel = getDataChannel(); // magic happens here
+var randomName = require('random-name');
+var dc = require('pull-datachannel');
 
-// read the data coming from the stream and log it out
-pull(
-  dc.read(channel),
-  pull.log()
-);
+quickconnect({ ns: 'dctest', data: true, dtls: true })
+  .on('dc:open', function(channel, peerId) {
+    console.log('data channel opened for peer: ' + peerId);
+
+    // when we get data, log it
+    pull(
+      dc.read(channel),
+      pull.log()
+    );
+
+    sendRandomNames(channel);
+  });
+
+function sendRandomNames(channel) {
+  setTimeout(function() {
+    channel.send(randomName());
+    sendRandomNames(channel);
+  }, Math.random() * 1000);
+}
 ```
 
 ### write
 
-Create a pull-stream sink on a `RTCDataChannel`.
-
-```js
-var pull = require('pull-stream');
-var dc = require('pull-dc');
-var channel = getDataChannel(); // magic happens here
-
-// write the values to the data channel
-pull(
-  pull.values([1, 2, 3]),
-  dc.write(channel)
-);
-```
+To be completed.
 
 ## License(s)
 
