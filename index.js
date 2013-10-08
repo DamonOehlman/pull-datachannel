@@ -86,13 +86,23 @@ exports.write = pull.Sink(function(read, dc, done) {
     // process the data
     try {
       dc.send(data);
+
+      // read the next data chunk
+      read(null, next);
     }
     catch (e) {
-      // console.log('captured error: ', e);
+      // handle exception 12 (known bug)
+      if (e.code && e.code === 12) {
+        console.log('captured error code 12, waiting 500ms');
+        setTimeout(function() {
+          next(null, data);
+        }, 500);
+      }
+      // rethrow the unknown exception
+      else {
+        throw e;
+      }
     }
-
-    // read the next data chunk
-    read(null, next);
   }
 
   read(null, next);
