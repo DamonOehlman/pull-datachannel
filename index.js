@@ -12,7 +12,7 @@ var pull = require('pull-core');
 
   ## Example Usage
 
-  Displayed below is an example that demonstrates how pull-streams can 
+  Displayed below is an example that demonstrates how pull-streams can
   be used in conjunction with the data channel to transmit and receive
   data via data-channels:
 
