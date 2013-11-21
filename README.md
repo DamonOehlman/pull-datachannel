@@ -13,12 +13,12 @@ makes use of these pull-streams.
 
 ## Example Usage
 
-Displayed below is an example that demonstrates how pull-streams can 
+Displayed below is an example that demonstrates how pull-streams can
 be used in conjunction with the data channel to transmit and receive
 data via data-channels:
 
 ```js
-var quickconnect = require('rtc-quickconnect');
+var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var observable = require('pull-observable');
 var dc = require('pull-datachannel');
@@ -58,7 +58,7 @@ function drawCursor(color) {
   };
 }
 
-quickconnect({ ns: 'dctest', data: true })
+qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
@@ -95,12 +95,12 @@ need to click and drag the mouse to create move events.
 Create a pull-stream source on a `RTCDataChannel`.
 
 ```js
-var quickconnect = require('rtc-quickconnect');
+var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var randomName = require('random-name');
 var dc = require('pull-datachannel');
 
-quickconnect({ ns: 'dctest', data: true })
+qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
@@ -126,11 +126,11 @@ function sendRandomNames(channel) {
 Create a pull-stream sink on target data channel.
 
 ```js
-var quickconnect = require('rtc-quickconnect');
+var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var dc = require('pull-datachannel');
 
-quickconnect({ ns: 'dctest', data: true, dtls: true })
+qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true, dtls: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
