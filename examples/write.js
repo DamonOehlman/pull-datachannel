@@ -1,8 +1,8 @@
-var quickconnect = require('rtc-quickconnect');
+var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var dc = require('../');
 
-quickconnect({ ns: 'dctest', data: true, dtls: true })
+qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true, dtls: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 

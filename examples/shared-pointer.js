@@ -1,4 +1,4 @@
-var quickconnect = require('rtc-quickconnect');
+var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var observable = require('pull-observable');
 var dc = require('../');
@@ -38,7 +38,7 @@ function drawCursor(color) {
   };
 }
 
-quickconnect({ ns: 'dctest', data: true })
+qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true })
   .on('dc:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
