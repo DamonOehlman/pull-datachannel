@@ -54,12 +54,13 @@ function drawCursor(color) {
     // save the last xy
     lastXY = [].concat(xy);
 
-    return args;
+    return args.slice(0, 3);
   };
 }
 
-qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true })
-  .on('dc:open', function(channel, peerId) {
+qc('http://rtc.io/switchboard/', { room: 'pulldc-sharedpointer' })
+  .createDataChannel('cursor')
+  .on('cursor:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
     // stream the pointer information across the datachannel
@@ -100,8 +101,9 @@ var pull = require('pull-stream');
 var randomName = require('random-name');
 var dc = require('pull-datachannel');
 
-qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true })
-  .on('dc:open', function(channel, peerId) {
+qc('http://rtc.io/switchboard/', { room: 'pull-dc-read' })
+  .createDataChannel('test')
+  .on('test:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
     // when we get data, log it
@@ -130,8 +132,9 @@ var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var dc = require('pull-datachannel');
 
-qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true, dtls: true })
-  .on('dc:open', function(channel, peerId) {
+qc('http://rtc.io/switchboard/', { room: 'pulldc-write' })
+  .createDataChannel('test')
+  .on('test:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
     channel.addEventListener('message', function(evt) {
@@ -150,7 +153,7 @@ qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true, dtls: true 
 
 ### MIT
 
-Copyright (c) 2013 Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2014 Damon Oehlman <damon.oehlman@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
