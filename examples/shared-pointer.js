@@ -34,12 +34,13 @@ function drawCursor(color) {
     // save the last xy
     lastXY = [].concat(xy);
 
-    return args;
+    return args.slice(0, 3);
   };
 }
 
-qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true })
-  .on('dc:open', function(channel, peerId) {
+qc('http://rtc.io/switchboard/', { room: 'pulldc-sharedpointer' })
+  .createDataChannel('cursor')
+  .on('cursor:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
     // stream the pointer information across the datachannel

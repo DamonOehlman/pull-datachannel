@@ -3,8 +3,9 @@ var pull = require('pull-stream');
 var randomName = require('random-name');
 var dc = require('../');
 
-qc({ ns: 'dctest', signaller: 'http://sig.rtc.io:50000', data: true })
-  .on('dc:open', function(channel, peerId) {
+qc('http://rtc.io/switchboard/', { room: 'pull-dc-read' })
+  .createDataChannel('test')
+  .on('test:open', function(channel, peerId) {
     console.log('data channel opened for peer: ' + peerId);
 
     // when we get data, log it
