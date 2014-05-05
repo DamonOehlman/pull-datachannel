@@ -5,7 +5,7 @@ var dc = require('../');
 
 qc('http://rtc.io/switchboard/', { room: 'pull-dc-read' })
   .createDataChannel('test')
-  .on('test:open', function(channel, peerId) {
+  .on('channel:opened:test', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
 
     // when we get data, log it

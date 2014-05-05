@@ -40,7 +40,7 @@ function drawCursor(color) {
 
 qc('http://rtc.io/switchboard/', { room: 'pulldc-sharedpointer' })
   .createDataChannel('cursor')
-  .on('cursor:open', function(channel, peerId) {
+  .on('channel:opened:cursor', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
 
     // stream the pointer information across the datachannel

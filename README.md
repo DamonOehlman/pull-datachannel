@@ -60,7 +60,7 @@ function drawCursor(color) {
 
 qc('http://rtc.io/switchboard/', { room: 'pulldc-sharedpointer' })
   .createDataChannel('cursor')
-  .on('cursor:open', function(channel, peerId) {
+  .on('channel:opened:cursor', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
 
     // stream the pointer information across the datachannel
@@ -78,6 +78,7 @@ qc('http://rtc.io/switchboard/', { room: 'pulldc-sharedpointer' })
       pull.drain(drawCursor('#F00'))
     );
   });
+
 ```
 
 __NOTE:__ At this stage, even though I'm sending only text data I am still
@@ -103,7 +104,7 @@ var dc = require('pull-datachannel');
 
 qc('http://rtc.io/switchboard/', { room: 'pull-dc-read' })
   .createDataChannel('test')
-  .on('test:open', function(channel, peerId) {
+  .on('channel:opened:test', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
 
     // when we get data, log it
@@ -121,6 +122,7 @@ function sendRandomNames(channel) {
     sendRandomNames(channel);
   }, Math.random() * 1000);
 }
+
 ```
 
 ### write
@@ -134,7 +136,7 @@ var dc = require('pull-datachannel');
 
 qc('http://rtc.io/switchboard/', { room: 'pulldc-write' })
   .createDataChannel('test')
-  .on('test:open', function(channel, peerId) {
+  .on('channel:opened:test', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
 
     channel.addEventListener('message', function(evt) {
@@ -147,6 +149,7 @@ qc('http://rtc.io/switchboard/', { room: 'pulldc-write' })
       dc.write(channel)
     );
   });
+
 ```
 
 ## License(s)
