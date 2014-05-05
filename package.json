@@ -22,13 +22,13 @@
     "url": "https://github.com/DamonOehlman/pull-datachannel/issues"
   },
   "dependencies": {
-    "pull-core": "~1.0.0"
+    "pull-core": "^1"
   },
   "devDependencies": {
-    "pull-stream": "^2.21.0",
-    "rtc-quickconnect": "^0.15.0",
-    "random-name": "~0.1.0",
-    "point": "^0.3.1",
-    "pull-observable": "~0.1.1"
+    "pull-stream": "^2",
+    "rtc-quickconnect": "~0.15",
+    "random-name": "~0.1",
+    "point": "~0.3",
+    "pull-observable": "~0.1"
   }
 }
