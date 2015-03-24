@@ -38,7 +38,7 @@ function drawCursor(color) {
   };
 }
 
-qc('http://rtc.io/switchboard/', { room: 'pulldc-sharedpointer' })
+qc('https://switchboard.rtc.io/', { room: 'pulldc-sharedpointer' })
   .createDataChannel('cursor')
   .on('channel:opened:cursor', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);

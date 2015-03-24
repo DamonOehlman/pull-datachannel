@@ -3,7 +3,7 @@ var pull = require('pull-stream');
 var randomName = require('random-name');
 var dc = require('../');
 
-qc('http://rtc.io/switchboard/', { room: 'pull-dc-read' })
+qc('https://switchboard.rtc.io/', { room: 'pull-dc-read' })
   .createDataChannel('test')
   .on('channel:opened:test', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);

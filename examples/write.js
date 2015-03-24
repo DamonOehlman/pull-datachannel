@@ -2,7 +2,7 @@ var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var dc = require('../');
 
-qc('http://rtc.io/switchboard/', { room: 'pulldc-write' })
+qc('https://switchboard.rtc.io/', { room: 'pulldc-write' })
   .createDataChannel('test')
   .on('channel:opened:test', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
