@@ -11,6 +11,7 @@ makes use of these pull-streams.
 [![NPM](https://nodei.co/npm/pull-datachannel.png)](https://nodei.co/npm/pull-datachannel/)
 
 
+
 ## Example Usage
 
 Displayed below is an example that demonstrates how pull-streams can
@@ -58,7 +59,7 @@ function drawCursor(color) {
   };
 }
 
-qc('http://rtc.io/switchboard/', { room: 'pulldc-sharedpointer' })
+qc('https://switchboard.rtc.io/', { room: 'pulldc-sharedpointer' })
   .createDataChannel('cursor')
   .on('channel:opened:cursor', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
@@ -102,7 +103,7 @@ var pull = require('pull-stream');
 var randomName = require('random-name');
 var dc = require('pull-datachannel');
 
-qc('http://rtc.io/switchboard/', { room: 'pull-dc-read' })
+qc('https://switchboard.rtc.io/', { room: 'pull-dc-read' })
   .createDataChannel('test')
   .on('channel:opened:test', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
@@ -134,7 +135,7 @@ var qc = require('rtc-quickconnect');
 var pull = require('pull-stream');
 var dc = require('pull-datachannel');
 
-qc('http://rtc.io/switchboard/', { room: 'pulldc-write' })
+qc('https://switchboard.rtc.io/', { room: 'pulldc-write' })
   .createDataChannel('test')
   .on('channel:opened:test', function(peerId, channel) {
     console.log('data channel opened for peer: ' + peerId);
@@ -156,7 +157,7 @@ qc('http://rtc.io/switchboard/', { room: 'pulldc-write' })
 
 ### MIT
 
-Copyright (c) 2014 Damon Oehlman <damon.oehlman@gmail.com>
+Copyright (c) 2015 Damon Oehlman <damon.oehlman@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
