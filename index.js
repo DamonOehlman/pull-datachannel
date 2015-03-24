@@ -4,11 +4,7 @@ var pull = require('pull-core');
   # pull-datachannel
 
   [Pull Stream](https://github.com/dominictarr/pull-stream) interfaces for
-  working with WebRTC data channels.  While this is not an official part of
-  the [rtc.io](http://www.rtc.io/) suite they do work very nicely with them
-  and the
-  [Sharing using Data Channels demo](https://github.com/rtc-io/demo-sharing)
-  makes use of these pull-streams.
+  working with WebRTC data channels.
 
   ## Example Usage
 
