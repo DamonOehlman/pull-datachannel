@@ -10,7 +10,7 @@ makes use of these pull-streams.
 
 [![NPM](https://nodei.co/npm/pull-datachannel.png)](https://nodei.co/npm/pull-datachannel/)
 
-
+[![bitHound Score](https://www.bithound.io/github/DamonOehlman/pull-datachannel/badges/score.svg)](https://www.bithound.io/github/DamonOehlman/pull-datachannel) 
 
 ## Example Usage
 
