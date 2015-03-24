@@ -25,10 +25,10 @@
     "pull-core": "^1"
   },
   "devDependencies": {
+    "point": "^1.2.0",
+    "pull-observable": "~0.1",
     "pull-stream": "^2",
-    "rtc-quickconnect": "^1",
     "random-name": "~0.1",
-    "point": "~0.3",
-    "pull-observable": "~0.1"
+    "rtc-quickconnect": "^4.2.0"
   }
 }
